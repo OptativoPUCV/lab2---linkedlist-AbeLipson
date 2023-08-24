@@ -47,14 +47,12 @@ void *firstList(List *list) {
 }
 
 void *nextList(List *list) {
-  void *repuesta;
   if (list->current->next != NULL && list->current != NULL) {
     list->current = list->current->next;
-    repuesta = list->current->data;
+    return list->current->data;
   } else {
-    repuesta = NULL;
+    return NULL;
   }
-  return repuesta;
 }
 
 void *lastList(List *list) {
