@@ -173,3 +173,8 @@ list.c:70:10: error: ‘response1’ may be used uninitialized in this function 
 cc1: all warnings being treated as errors
 Compilation failed
 eba14e2
+Thu 24 Aug 2023 09:00:27 PM UTC: 
+ list.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  0|0
+d1a05b8

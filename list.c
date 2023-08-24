@@ -62,8 +62,8 @@ void *lastList(List *list) {
   if (list->current != NULL && list->current->prev != NULL) {
     while (list->current->next != NULL) {
       list->current = list->current->next;
-      response1 = list->current->data;
     }
+    response1 = list->current->data;
   } else {
     response1 = NULL;
   }
