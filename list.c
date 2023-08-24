@@ -36,8 +36,11 @@ List *createList() {
   return newList;
 }
 
-void *firstList(List *list) { /*work in progress, may want to add an if catch
-                                 for if the list is empty */
+void *firstList(List *list) {
+  if (list == NULL || list->head == NULL) {
+    return NULL; // Return NULL if the list is empty or invalid
+  }
+
   list->current = list->head;
 
   return list->current->data;
