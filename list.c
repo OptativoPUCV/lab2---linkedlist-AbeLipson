@@ -47,65 +47,63 @@ void *firstList(List *list) {
 }
 
 void *nextList(List *list) {
-
   if (list->current->next != NULL && list->current != NULL) {
     list->current = list->current->next;
-    return list->current->data; // Return NULL if the list is empty or invalid
-  } else {
-    return NULL;
   }
+  return list->current->data;
+}
 
-  void *lastList(List * list) {
-    while (list->current->next != NULL) {
-      list->current = list->current->next;
-    }
-    return list->current->data;
-  }
-
-  void *prevList(List * list) {
-    list->current = list->current->prev;
-    return list->current;
-  }
-
-  void pushFront(List * list, void *data) {
-    Node *newNode = createNode(data);
-    newNode->next = list->head;
-    list->head = newNode;
-  }
-
-  void pushBack(List * list, void *data) {
-    list->current = list->tail;
-    pushCurrent(list, data);
-  }
-
-  void pushCurrent(List * list, void *data) {
-    Node *newNode = createNode(data);
-    newNode->prev = list->current;
-    newNode->next = list->current->next;
-    list->current->next = newNode;
-  }
-
-  void *popFront(List * list) {
-    list->current = list->head;
-    return popCurrent(list);
-  }
-
-  void *popBack(List * list) {
-    list->current = list->tail;
-    return popCurrent(list);
-  }
-
-  void *popCurrent(List * list) {
-    Node *stbGone = createNode(list->current->data);
-    list->current->prev->next = list->current->next;
-    list->current->next->prev = list->current->prev;
+void *lastList(List *list) {
+  while (list->current->next != NULL) {
     list->current = list->current->next;
-
-    return stbGone->data;
   }
+  return list->current->data;
+}
 
-  void cleanList(List * list) {
-    while (list->head != NULL) {
-      popFront(list);
-    }
+void *prevList(List *list) {
+  list->current = list->current->prev;
+  return list->current;
+}
+
+void pushFront(List *list, void *data) {
+  Node *newNode = createNode(data);
+  newNode->next = list->head;
+  list->head = newNode;
+}
+
+void pushBack(List *list, void *data) {
+  list->current = list->tail;
+  pushCurrent(list, data);
+}
+
+void pushCurrent(List *list, void *data) {
+  Node *newNode = createNode(data);
+  newNode->prev = list->current;
+  newNode->next = list->current->next;
+  list->current->next = newNode;
+}
+
+void *popFront(List *list) {
+  list->current = list->head;
+  return popCurrent(list);
+}
+
+void *popBack(List *list) {
+  list->current = list->tail;
+  return popCurrent(list);
+}
+
+void *popCurrent(List *list) {
+  Node *stbGone = createNode(list->current->data);
+  list->current->prev->next = list->current->next;
+  list->current->next->prev = list->current->prev;
+  list->current = list->current->next;
+
+  return stbGone->data;
+}
+
+void cleanList(List *list) {
+  while (list->head != NULL) {
+    popFront(list);
   }
+}
