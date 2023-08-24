@@ -47,11 +47,13 @@ void *firstList(List *list) {
 }
 
 void *nextList(List *list) {
-  if (list->current->next == NULL&& list->current == NULL) {
-    return NULL; // Return NULL if the list is empty or invalid
-  }
+
   list->current = list->current->next;
   return list->current->data;
+
+  if (list->current->next == NULL && list->current == NULL) {
+    return NULL; // Return NULL if the list is empty or invalid
+  }
 }
 
 void *lastList(List *list) {
