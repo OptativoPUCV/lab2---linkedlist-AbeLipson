@@ -47,7 +47,7 @@ void *firstList(List *list) {
 }
 
 void *nextList(List *list) {
-  if (list == NULL || list->head == NULL) {
+  if (list == NULL || list->current->next == NULL) {
     return NULL; // Return NULL if the list is empty or invalid
   }
   list->current = list->current->next;
