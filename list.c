@@ -58,10 +58,16 @@ void *nextList(List *list) {
 }
 
 void *lastList(List *list) {
-  while (list->current->next != NULL) {
-    list->current = list->current->next;
+  void *response;
+  if (list->current != NULL && list->current->prev != NULL) {
+    while (list->current->next != NULL) {
+      list->current = list->current->next;
+      response = list->current->data;
+    }
+  } else {
+    response = NULL;
   }
-  return list->current->data;
+  return response;
 }
 
 void *prevList(List *list) {
