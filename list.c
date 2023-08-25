@@ -73,7 +73,8 @@ void *lastList(List *list) {
 void *prevList(List *list) {
   void *response;
   if (list->current != NULL && list->current->prev != NULL) {
-    response = list->current->prev->data;
+    list->current = list->current->prev;
+    response = list->current->data;
   } else {
     response = NULL;
   }
