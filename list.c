@@ -127,10 +127,14 @@ void *popCurrent(List *list) {
     list->current->prev->next = list->current->next;
     list->current->next->prev = list->current->prev;
     list->current = list->current->next;
-  }
-  else if(list->current == list->head &&list->current != list->tail){
+  } else if (list->current == list->head && list->current != list->tail) {
     list->head = list->current->next;
-    list->head->prev =NULL;
+    list->head->prev = NULL;
+  } else if (list->current != list->head && list->current == list->tail) {
+    list->tail = list->current->prev;
+    list->tail->next = NULL;
+  } else {
+    list = NULL;
   }
 
   return stbGone->data;
