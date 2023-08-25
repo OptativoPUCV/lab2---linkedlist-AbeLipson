@@ -59,7 +59,7 @@ void *nextList(List *list) {
 
 void *lastList(List *list) {
   void *response1;
-  if (list->current != NULL && list->current->prev != NULL) {
+  if (list != NULL && list->current != NULL) {
     while (list->current->next != NULL) {
       list->current = list->current->next;
     }
