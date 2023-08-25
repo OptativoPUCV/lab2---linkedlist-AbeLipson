@@ -123,12 +123,14 @@ void *popBack(List *list) {
 
 void *popCurrent(List *list) {
   Node *stbGone = createNode(list->current->data);
-  if (list->current != NULL && list->current->prev != NULL &&
-      list->current->next) {
-
+  if (list->current != list->head && list->current != list->tail) {
     list->current->prev->next = list->current->next;
     list->current->next->prev = list->current->prev;
     list->current = list->current->next;
+  }
+  else if(list->current == list->head &&list->current != list->tail){
+    list->head = list->current->next;
+    list->head->prev =NULL;
   }
 
   return stbGone->data;
